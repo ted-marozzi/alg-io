@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -22,7 +21,7 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-//  TextStyle algoFont = GoogleFonts.ubuntu(fontSize: 40);
+  TextStyle algoFont = GoogleFonts.ubuntu(fontSize: 40);
 
   @override
   Widget build(BuildContext context) {
@@ -46,3 +45,5 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
           ]),
         ));
+  }
+}
