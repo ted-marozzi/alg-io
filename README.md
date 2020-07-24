@@ -13,7 +13,8 @@ To begin:
     # Make sure you are in the repo folder
     cd algo-io
     
-    # This pulls/copies the origin (Or remote master branch) to master (or local master)
+    # This pulls/copies the origin (Or remote master branch) to master 
+    # (or local master)
     # and ensures the local master and origin master are in sync
     git pull origin master
     
@@ -23,14 +24,16 @@ To begin:
 
 To use:
 
-    # This pulls/copies the origin (Or remote master branch) to master (or local master)
+    # This pulls/copies the origin (Or remote master branch) to master 
+    # (or local master)
     # and ensures the local master and origin master are in sync
     git pull origin master
     
     # This moves onto the feature branch you are working on
     git checkout username-feature
     
-    # Make add and commit your changes with descriptive messages, when feature is done.
+    # Make add and commit your changes with descriptive messages, 
+    # when feature is done.
     git add .
     git commit -m "Descriptive"
     git push origin username-feature
