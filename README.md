@@ -1,4 +1,4 @@
-# algo-io
+# alg-io
 A data structure and algorithm viewing tool. Written in flutter deployed in ios, android and web.
 
 Please follow this style guide.
@@ -21,7 +21,8 @@ To begin:
     git checkout -b username-feature
 
 
-To use:   
+To use:
+
     # This pulls/copies the origin (Or remote master branch) to master (or local master)
     # and ensures the local master and origin master are in sync
     git pull origin master
