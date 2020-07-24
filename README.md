@@ -9,13 +9,7 @@ Our GitHub workflow is planned to be as follows:
 To begin:
   
     git clone https://github.com/ted-marozzi/algo-io.git
-
-OR MAYBE (Not sure how collab works yet)
-
-    git clone https://github.com/username/algo-io.git
-
-To use:
-      
+    
     # Make sure you are in the repo folder
     cd algo-io
     
@@ -25,6 +19,15 @@ To use:
     
     # This creates and moves onto a new feature branch
     git checkout -b username-feature
+
+
+To use:   
+    # This pulls/copies the origin (Or remote master branch) to master (or local master)
+    # and ensures the local master and origin master are in sync
+    git pull origin master
+    
+    # This moves onto the feature branch you are working on
+    git checkout username-feature
     
     # Make add and commit your changes with descriptive messages, when feature is done.
     git add .
