@@ -5,20 +5,45 @@ void main() {
   runApp(AlgIO());
 }
 
-// The App will start as a stateful widget
-class AlgIO extends StatefulWidget {
+class AlgIO extends StatelessWidget {
   @override
-  _AlgIOState createState() => _AlgIOState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: WelcomeScreen(),
+    );
+  }
 }
 
-class _AlgIOState extends State<AlgIO> {
+// The App will start as a stateful widget
+class WelcomeScreen extends StatefulWidget {
+  @override
+  _WelcomeScreenState createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  TextStyle algoFont = GoogleFonts.ubuntu(fontSize: 40);
+
   @override
   Widget build(BuildContext context) {
     return Container(
         color: Color.fromARGB(100, 56, 99, 168),
-        child: Text(
-          'AlgIO',
-          style: GoogleFonts.getFont('Ubuntu'),
+        child: Center(
+          child: Column(children: [
+            Divider(
+              height: 250,
+            ),
+            Text(
+              'AlgIO',
+            ),
+            FlatButton(
+              color: Colors.grey,
+              onPressed: null,
+              child: Text(
+                'Continue to App',
+                textDirection: TextDirection.ltr,
+              ),
+            ),
+          ]),
         ));
   }
 }
