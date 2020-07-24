@@ -39,7 +39,15 @@ To use:
     git pull origin master
     
     
+Other useful commands:
     
+    # delete branch locally
+    git branch -d localBranchName
+
+    # delete branch remotely
+    git push origin --delete remoteBranchName
+
+
     
 
     
