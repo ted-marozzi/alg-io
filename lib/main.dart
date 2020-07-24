@@ -21,7 +21,7 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  TextStyle algoFont = GoogleFonts.ubuntu(fontSize: 40);
+//  TextStyle algoFont = GoogleFonts.ubuntu(fontSize: 40);
 
   @override
   Widget build(BuildContext context) {
