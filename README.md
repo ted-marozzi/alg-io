@@ -1,6 +1,8 @@
 # alg-io
 A data structure and algorithm viewing tool. Written in flutter deployed in ios, android and web.
 
+![Home Screen preview](https://github.com/ted-marozzi/alg-io/master/home.png?raw=true)
+
 Please follow this style guide.
 https://dart.dev/guides/language/effective-dart/style
 
