@@ -12,13 +12,13 @@ class AlgIO extends StatelessWidget {
       theme: ThemeData(
         backgroundColor: Color.fromARGB(100, 56, 99, 168),
         textTheme: TextTheme(
-          headline: GoogleFonts.ubuntu(
-            textStyle: Theme.of(context).textTheme.display1,
+          headline5: GoogleFonts.ubuntu(
+            textStyle: Theme.of(context).textTheme.headline4,
             fontSize: 60,
             color: Colors.white,
           ),
-          body1: GoogleFonts.ubuntu(
-            textStyle: Theme.of(context).textTheme.display1,
+          bodyText1: GoogleFonts.ubuntu(
+            textStyle: Theme.of(context).textTheme.headline4,
             fontSize: 20,
             color: Colors.white,
           ),
@@ -46,7 +46,7 @@ class WelcomeScreen extends StatelessWidget {
           ),
           Text(
             'alg.io',
-            style: Theme.of(context).textTheme.headline,
+            style: Theme.of(context).textTheme.headline5,
           ),
           Divider(height: 20),
           // A button which will progress the app when pressed
@@ -58,7 +58,7 @@ class WelcomeScreen extends StatelessWidget {
               child: Container(
                 child: Text(
                   'Continue to App',
-                  style: Theme.of(context).textTheme.body1,
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
               ),
             ),
@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     TextStyle titleFont = GoogleFonts.ubuntu(
-      textStyle: Theme.of(context).textTheme.display1,
+      textStyle: Theme.of(context).textTheme.headline4,
       fontSize: 20,
       color: Colors.white,
     );
@@ -131,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
       title: Text(
         topic,
         style: GoogleFonts.ubuntu(
-          textStyle: Theme.of(context).textTheme.display1,
+          textStyle: Theme.of(context).textTheme.headline4,
           fontSize: 20,
           color: Colors.white,
         ),
@@ -162,12 +162,30 @@ class SortingAlgScreen extends StatefulWidget {
 class _SortingAlgScreenState extends State<SortingAlgScreen> {
   @override
   Widget build(BuildContext context) {
+    int i = 0;
     return Container(
       color: Theme.of(context).backgroundColor,
       child: Center(
-        child: Text(
-          'Sorting Algorithms coming soon',
-          style: Theme.of(context).textTheme.headline,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+                decoration: BoxDecoration(color: Colors.white),
+                child: SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: Container(
+                        color: Colors.black, child: Text(i.toString())))),
+            Container(
+                decoration: BoxDecoration(color: Colors.white),
+                child:
+                    SizedBox(width: 50, height: 50, child: Text(i.toString()))),
+            Container(
+                decoration: BoxDecoration(color: Colors.white),
+                child:
+                    SizedBox(width: 50, height: 50, child: Text(i.toString()))),
+          ],
         ),
       ),
     );
