@@ -45,7 +45,7 @@ class WelcomeScreen extends StatelessWidget {
             height: 250,
           ),
           Text(
-            'AlgIO',
+            'alg.io',
             style: Theme.of(context).textTheme.headline,
           ),
           Divider(height: 20),
@@ -102,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
           elevation: 10,
           backgroundColor: Theme.of(context).backgroundColor,
           title: Text(
-            'AlgIO',
+            'alg.io',
             style: titleFont,
           )),
       body: _buildTopics(),
