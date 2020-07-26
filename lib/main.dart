@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -28,6 +30,7 @@ class AlgIO extends StatelessWidget {
         '/': (context) => WelcomeScreen(),
         '/home': (context) => HomeScreen(),
         '/sorting': (context) => SortingAlgScreen(),
+        '/mergeSort': (context) => MergeSortScreen(),
       },
     );
   }
@@ -160,34 +163,119 @@ class SortingAlgScreen extends StatefulWidget {
 }
 
 class _SortingAlgScreenState extends State<SortingAlgScreen> {
+  final _topics = [
+    'Merge Sort',
+    'Quick Sort',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    TextStyle titleFont = GoogleFonts.ubuntu(
+      textStyle: Theme.of(context).textTheme.headline4,
+      fontSize: 20,
+      color: Colors.white,
+    );
+    return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+      appBar: AppBar(
+          elevation: 10,
+          backgroundColor: Theme.of(context).backgroundColor,
+          title: Text(
+            'alg.io',
+            style: titleFont,
+          )),
+      body: _buildTopics(),
+    );
+  }
+
+  Widget _buildTopics() {
+    return ListView.builder(
+        padding: const EdgeInsets.all(16),
+        itemBuilder: (BuildContext _context, int i) {
+          if (i.isOdd) {
+            return Divider();
+          }
+          final int index = i ~/ 2;
+          if (index < _topics.length) {
+            return _buildRow(_topics[index]);
+          } else {
+            return _buildRow('');
+          }
+        });
+  }
+
+  Widget _buildRow(String topic) {
+    final bool isEmpty = topic.isEmpty;
+    return ListTile(
+      title: Text(
+        topic,
+        style: GoogleFonts.ubuntu(
+          textStyle: Theme.of(context).textTheme.headline4,
+          fontSize: 20,
+          color: Colors.white,
+        ),
+      ),
+      trailing: isEmpty
+          ? null
+          : Icon(
+              Icons.send,
+              color: Colors.white.withOpacity(0.5),
+              size: 20,
+            ),
+      onTap: () => visitPage(context, topic),
+    );
+  }
+
+  void visitPage(BuildContext context, String directory) {
+    if (directory == 'Merge Sort') {
+      Navigator.pushNamed(context, '/mergeSort');
+    }
+  }
+}
+
+class MergeSortScreen extends StatefulWidget {
+  @override
+  _MergeSortScreenState createState() => _MergeSortScreenState();
+}
+
+class _MergeSortScreenState extends State<MergeSortScreen> {
   @override
   Widget build(BuildContext context) {
     int i = 0;
+    Random rng = new Random();
     return Container(
       color: Theme.of(context).backgroundColor,
       child: Center(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-                decoration: BoxDecoration(color: Colors.white),
-                child: SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: Container(
-                        color: Colors.black, child: Text(i.toString())))),
-            Container(
-                decoration: BoxDecoration(color: Colors.white),
-                child:
-                    SizedBox(width: 50, height: 50, child: Text(i.toString()))),
-            Container(
-                decoration: BoxDecoration(color: Colors.white),
-                child:
-                    SizedBox(width: 50, height: 50, child: Text(i.toString()))),
+            arrayBox(rng.nextInt(10)),
+            arrayBox(rng.nextInt(10)),
+            arrayBox(rng.nextInt(10)),
+            arrayBox(rng.nextInt(10)),
+            arrayBox(rng.nextInt(10)),
+            arrayBox(rng.nextInt(10)),
           ],
         ),
       ),
+    );
+  }
+
+  Widget arrayBox(int i) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: Container(
+          decoration: BoxDecoration(color: Colors.white),
+          child: SizedBox(
+              width: 50,
+              height: 50,
+              child: Center(
+                  child: Text(
+                i.toString(),
+                style: TextStyle(
+                    color: Colors.black, decoration: TextDecoration.none),
+              )))),
     );
   }
 }
