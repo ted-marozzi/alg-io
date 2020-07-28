@@ -246,7 +246,7 @@ class _MergeSortScreenState extends State<MergeSortScreen> {
     return Container(
       color: Theme.of(context).backgroundColor,
       child: Center(
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
