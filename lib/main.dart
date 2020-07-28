@@ -14,13 +14,13 @@ class AlgIO extends StatelessWidget {
       theme: ThemeData(
         backgroundColor: Color.fromARGB(100, 56, 99, 168),
         textTheme: TextTheme(
-          headline5: GoogleFonts.ubuntu(
-            textStyle: Theme.of(context).textTheme.headline4,
+          headline1: GoogleFonts.ubuntu(
+            textStyle: Theme.of(context).textTheme.headline1,
             fontSize: 60,
             color: Colors.white,
           ),
           bodyText1: GoogleFonts.ubuntu(
-            textStyle: Theme.of(context).textTheme.headline4,
+            textStyle: Theme.of(context).textTheme.headline1,
             fontSize: 20,
             color: Colors.white,
           ),
@@ -49,7 +49,7 @@ class WelcomeScreen extends StatelessWidget {
           ),
           Text(
             'alg.io',
-            style: Theme.of(context).textTheme.headline5,
+            style: Theme.of(context).textTheme.headline1,
           ),
           Divider(height: 20),
           // A button which will progress the app when pressed
@@ -95,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     TextStyle titleFont = GoogleFonts.ubuntu(
-      textStyle: Theme.of(context).textTheme.headline4,
+      textStyle: Theme.of(context).textTheme.headline1,
       fontSize: 20,
       color: Colors.white,
     );
@@ -134,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
       title: Text(
         topic,
         style: GoogleFonts.ubuntu(
-          textStyle: Theme.of(context).textTheme.headline4,
+          textStyle: Theme.of(context).textTheme.headline1,
           fontSize: 20,
           color: Colors.white,
         ),
@@ -171,7 +171,7 @@ class _SortingAlgScreenState extends State<SortingAlgScreen> {
   @override
   Widget build(BuildContext context) {
     TextStyle titleFont = GoogleFonts.ubuntu(
-      textStyle: Theme.of(context).textTheme.headline4,
+      textStyle: Theme.of(context).textTheme.headline1,
       fontSize: 20,
       color: Colors.white,
     );
@@ -210,7 +210,7 @@ class _SortingAlgScreenState extends State<SortingAlgScreen> {
       title: Text(
         topic,
         style: GoogleFonts.ubuntu(
-          textStyle: Theme.of(context).textTheme.headline4,
+          textStyle: Theme.of(context).textTheme.headline1,
           fontSize: 20,
           color: Colors.white,
         ),
