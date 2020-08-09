@@ -3,6 +3,15 @@ A data structure and algorithm viewing tool. Written in flutter deployed in ios,
 
 ![Home Screen preview](https://github.com/ted-marozzi/alg-io/blob/master/preview/home.png?raw=true)
 
+
+## Project Goals / Design
+The Goals of the project are to:
+    1. __Build__ the foundations of knowledge in App Development for all team members,
+    2. __Develop__ an in depth understanding of Flutter and Dart as a Coding base,
+    3. __Apply__ best Git workflow practices as part of a team project environment, and
+    4. __Learn__ workplace skills to be applied in occupations outside of study.
+
+
 Please follow this style guide.
 https://dart.dev/guides/language/effective-dart/style
 
@@ -40,7 +49,7 @@ To use:
     git commit -m "Descriptive"
     git push origin username-feature
     
-    # Now wait for pull request to be reviewed and accepted or denyied.
+    # Now wait for pull request to be reviewed and accepted or denied.
     # If accepted make sure to, and just do it in general to stay up to date
     git pull origin master
     
