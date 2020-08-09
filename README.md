@@ -6,12 +6,17 @@ A data structure and algorithm viewing tool. Written in flutter deployed in ios,
 
 ## Project Goals / Design
 The Goals of the project are to:
-    1. __Build__ the foundations of knowledge in App Development for all team members,
-    2. __Develop__ an in depth understanding of Flutter and Dart as a Coding base,
-    3. __Apply__ best Git workflow practices as part of a team project environment, and
-    4. __Learn__ workplace skills to be applied in occupations outside of study.
+    
+1. __Build__ the foundations of knowledge in App Development for all team members,
 
+2. __Develop__ an in depth understanding of Flutter and Dart as a Coding base,
 
+3. __Apply__ best Git workflow practices as part of a team project environment, and
+
+4. __Learn__ workplace skills to be applied in occupations outside of study.
+    
+
+## Workflow and Design Pattern
 Please follow this style guide.
 https://dart.dev/guides/language/effective-dart/style
 
