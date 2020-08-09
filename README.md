@@ -2,7 +2,7 @@
 A data structure and algorithm viewing tool. Written in flutter deployed in ios, android and web.
 
 ![Home Screen preview](https://github.com/ted-marozzi/alg-io/blob/master/preview/home.png?raw=true)
-
+![Home Screen preview](https://github.com/ted-marozzi/alg-io/blob/master/preview/merge-sort.png?raw=true)
 Please follow this style guide.
 https://dart.dev/guides/language/effective-dart/style
 
