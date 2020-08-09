@@ -7,14 +7,24 @@ void main() {
   runApp(AlgIO());
 }
 
-Widget appBar(BuildContext context, TextStyle titleFont) {
-  return AppBar(
-      elevation: 10,
-      backgroundColor: Theme.of(context).backgroundColor,
-      title: Text(
-        'alg.io',
-        style: titleFont,
-      ));
+Widget appBar(BuildContext context, String text) {
+  TextStyle titleFont = GoogleFonts.ubuntu(
+    textStyle: Theme.of(context).textTheme.headline4,
+    fontSize: 20,
+    color: Colors.white,
+  );
+  return PreferredSize(
+    preferredSize: Size.fromHeight(80),
+    child: AppBar(
+        elevation: 10,
+        backgroundColor: Theme.of(context).backgroundColor,
+        title: SafeArea(
+          child: Text(
+            text,
+            style: titleFont,
+          ),
+        )),
+  );
 }
 
 class AlgIO extends StatelessWidget {
@@ -40,7 +50,7 @@ class AlgIO extends StatelessWidget {
         '/': (context) => WelcomeScreen(),
         '/home': (context) => HomeScreen(),
         '/sorting': (context) => SortingAlgScreen(),
-        '/mergeSort': (context) => MergeSortScreen(),
+        '/mergeSort': (context) => AnimatedMergeSort(),
       },
     );
   }
@@ -104,14 +114,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle titleFont = GoogleFonts.ubuntu(
-      textStyle: Theme.of(context).textTheme.headline4,
-      fontSize: 20,
-      color: Colors.white,
-    );
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      appBar: appBar(context, titleFont),
+      appBar: appBar(context, "Algorithms and Data Structures"),
       body: _buildTopics(),
     );
   }
@@ -174,15 +179,9 @@ class _SortingAlgScreenState extends State<SortingAlgScreen> {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle titleFont = GoogleFonts.ubuntu(
-      textStyle: Theme.of(context).textTheme.headline4,
-      fontSize: 20,
-      color: Colors.white,
-    );
-
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      appBar: appBar(context, titleFont),
+      appBar: appBar(context, "Sorting Algorithms"),
       body: _buildTopics(),
     );
   }
@@ -232,45 +231,56 @@ class _SortingAlgScreenState extends State<SortingAlgScreen> {
   }
 }
 
-class MergeSortScreen extends StatefulWidget {
+class AnimatedMergeSort extends StatefulWidget {
   @override
-  _MergeSortScreenState createState() => _MergeSortScreenState();
+  _AnimatedMergeSortState createState() => _AnimatedMergeSortState();
 }
 
-class _MergeSortScreenState extends State<MergeSortScreen> {
+Widget mergeSort() {
+  return null;
+}
+
+class _AnimatedMergeSortState extends State<AnimatedMergeSort> {
+  List<Widget> arrayBoxes = [];
+  Random rng = new Random();
+  @override
+  void initState() {
+    super.initState();
+
+    for (int i = 0; i < 6; i++) {
+      arrayBoxes.add(arrayBox(rng.nextInt(10)));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    Random rng = new Random();
-
-    TextStyle titleFont = GoogleFonts.ubuntu(
-      textStyle: Theme.of(context).textTheme.headline4,
-      fontSize: 20,
-      color: Colors.white,
-    );
-
     return Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
-        appBar: appBar(context, titleFont),
-        body: Container(
-          color: Theme.of(context).backgroundColor,
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  arrayBox(rng.nextInt(10)),
-                  arrayBox(rng.nextInt(10)),
-                  arrayBox(rng.nextInt(10)),
-                  arrayBox(rng.nextInt(10)),
-                  arrayBox(rng.nextInt(10)),
-                  arrayBox(rng.nextInt(10)),
-                ],
-              ),
-            ),
-          ),
-        ));
+      backgroundColor: Theme.of(context).backgroundColor,
+      appBar: appBar(context, "Merge sort"),
+      body: colArrayBox(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            for (int i = 0; i < 6; i++) {
+              //arrayBoxes[i]
+            }
+          });
+        },
+        child: Icon(Icons.play_arrow),
+      ),
+    );
+  }
+
+  Widget colArrayBox() {
+    return Container(
+      color: Theme.of(context).backgroundColor,
+      child: Center(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: arrayBoxes),
+      ),
+    );
   }
 
   Widget arrayBox(int i) {
@@ -279,13 +289,15 @@ class _MergeSortScreenState extends State<MergeSortScreen> {
       child: Container(
           decoration: BoxDecoration(color: Colors.white),
           child: SizedBox(
-              width: 50,
-              height: 50,
+              width: 75,
+              height: 75,
               child: Center(
                   child: Text(
                 i.toString(),
                 style: TextStyle(
-                    color: Colors.black, decoration: TextDecoration.none),
+                    color: Colors.black,
+                    decoration: TextDecoration.none,
+                    fontSize: 20),
               )))),
     );
   }
