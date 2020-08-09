@@ -14,7 +14,7 @@ Widget appBar(BuildContext context, String text) {
     color: Colors.white,
   );
   return PreferredSize(
-    preferredSize: Size.fromHeight(80),
+    preferredSize: Size.fromHeight(50),
     child: AppBar(
         elevation: 10,
         backgroundColor: Theme.of(context).backgroundColor,
@@ -22,8 +22,10 @@ Widget appBar(BuildContext context, String text) {
           child: Text(
             text,
             style: titleFont,
+            textAlign: TextAlign.center,
           ),
-        )),
+        )
+    ),
   );
 }
 
@@ -232,55 +234,68 @@ class _SortingAlgScreenState extends State<SortingAlgScreen> {
 }
 
 class AnimatedMergeSort extends StatefulWidget {
+  AnimatedMergeSort({Key key}) : super(key: key);
+
   @override
   _AnimatedMergeSortState createState() => _AnimatedMergeSortState();
 }
 
-Widget mergeSort() {
-  return null;
-}
+class _AnimatedMergeSortState extends State<AnimatedMergeSort>
+    with SingleTickerProviderStateMixin {
+  AnimationController _controller;
 
-class _AnimatedMergeSortState extends State<AnimatedMergeSort> {
   List<Widget> arrayBoxes = [];
   Random rng = new Random();
+
   @override
   void initState() {
     super.initState();
 
-    for (int i = 0; i < 6; i++) {
-      arrayBoxes.add(arrayBox(rng.nextInt(10)));
-    }
+    _controller = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    )..repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
-      appBar: appBar(context, "Merge sort"),
-      body: colArrayBox(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            for (int i = 0; i < 6; i++) {
-              //arrayBoxes[i]
-            }
-          });
-        },
-        child: Icon(Icons.play_arrow),
-      ),
-    );
-  }
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
 
-  Widget colArrayBox() {
-    return Container(
-      color: Theme.of(context).backgroundColor,
-      child: Center(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: arrayBoxes),
-      ),
-    );
+    double boxWidth = 75;
+
+
+    return Scaffold(
+        backgroundColor: Theme.of(context).backgroundColor,
+        appBar: appBar(context, "Merge Sort"),
+        body: LayoutBuilder(
+          builder: (context, constraints) {
+            final Size biggest = constraints.biggest;
+            return Stack(
+              children: [
+                PositionedTransition(
+                  rect: RelativeRectTween(
+                    begin: RelativeRect.fromSize(
+                        Rect.fromLTWH((screenWidth-boxWidth)/2, 50, boxWidth, boxWidth), biggest),
+                    end: RelativeRect.fromSize(
+                        Rect.fromLTWH((screenWidth-boxWidth)/2, 300, boxWidth, boxWidth), biggest),
+                  ).animate(CurvedAnimation(
+                    parent: _controller,
+                    curve: Curves.linear,
+                  )),
+                  child: Padding(
+                      padding: const EdgeInsets.all(8), child: arrayBox(0)),
+                ),
+              ],
+            );
+          },
+        ));
   }
 
   Widget arrayBox(int i) {
