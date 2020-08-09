@@ -7,6 +7,16 @@ void main() {
   runApp(AlgIO());
 }
 
+Widget appBar(BuildContext context, TextStyle titleFont) {
+  return AppBar(
+      elevation: 10,
+      backgroundColor: Theme.of(context).backgroundColor,
+      title: Text(
+        'alg.io',
+        style: titleFont,
+      ));
+}
+
 class AlgIO extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -101,13 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      appBar: AppBar(
-          elevation: 10,
-          backgroundColor: Theme.of(context).backgroundColor,
-          title: Text(
-            'alg.io',
-            style: titleFont,
-          )),
+      appBar: appBar(context, titleFont),
       body: _buildTopics(),
     );
   }
@@ -175,15 +179,10 @@ class _SortingAlgScreenState extends State<SortingAlgScreen> {
       fontSize: 20,
       color: Colors.white,
     );
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      appBar: AppBar(
-          elevation: 10,
-          backgroundColor: Theme.of(context).backgroundColor,
-          title: Text(
-            'alg.io',
-            style: titleFont,
-          )),
+      appBar: appBar(context, titleFont),
       body: _buildTopics(),
     );
   }
@@ -241,25 +240,37 @@ class MergeSortScreen extends StatefulWidget {
 class _MergeSortScreenState extends State<MergeSortScreen> {
   @override
   Widget build(BuildContext context) {
-    int i = 0;
     Random rng = new Random();
-    return Container(
-      color: Theme.of(context).backgroundColor,
-      child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            arrayBox(rng.nextInt(10)),
-            arrayBox(rng.nextInt(10)),
-            arrayBox(rng.nextInt(10)),
-            arrayBox(rng.nextInt(10)),
-            arrayBox(rng.nextInt(10)),
-            arrayBox(rng.nextInt(10)),
-          ],
-        ),
-      ),
+
+    TextStyle titleFont = GoogleFonts.ubuntu(
+      textStyle: Theme.of(context).textTheme.headline4,
+      fontSize: 20,
+      color: Colors.white,
     );
+
+    return Scaffold(
+        backgroundColor: Theme.of(context).backgroundColor,
+        appBar: appBar(context, titleFont),
+        body: Container(
+          color: Theme.of(context).backgroundColor,
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  arrayBox(rng.nextInt(10)),
+                  arrayBox(rng.nextInt(10)),
+                  arrayBox(rng.nextInt(10)),
+                  arrayBox(rng.nextInt(10)),
+                  arrayBox(rng.nextInt(10)),
+                  arrayBox(rng.nextInt(10)),
+                ],
+              ),
+            ),
+          ),
+        ));
   }
 
   Widget arrayBox(int i) {
