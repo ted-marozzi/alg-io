@@ -3,10 +3,13 @@ A data structure and algorithm viewing tool. Written in flutter deployed in ios,
 
 <img src="https://github.com/ted-marozzi/alg-io/blob/master/preview/home.png?raw=true" alt="Home Screen preview" width="300"> <img src="https://github.com/ted-marozzi/alg-io/blob/master/preview/merge-sort.png?raw=true" alt="Home Screen preview" width="300">
 
-
-
 ## Project Goals / Design
+
 The Goals of the project are to:
+
+<!-- <img src="https://github.com/ted-marozzi/alg-io/blob/master/preview/logo-goals.png?raw=true" alt="Team Goals Logo" width="300"> -->
+![image info](./preview/logo-goals-small.png)
+
 
 1. __Create__ a useful data visualisation tool for students interested in Computer Science,
     
