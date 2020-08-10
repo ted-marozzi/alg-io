@@ -24,8 +24,7 @@ Widget appBar(BuildContext context, String text) {
             style: titleFont,
             textAlign: TextAlign.center,
           ),
-        )
-    ),
+        )),
   );
 }
 
@@ -242,6 +241,7 @@ class AnimatedMergeSort extends StatefulWidget {
 
 class _AnimatedMergeSortState extends State<AnimatedMergeSort>
     with SingleTickerProviderStateMixin {
+  Animation<double> animation;
   AnimationController _controller;
 
   List<Widget> arrayBoxes = [];
@@ -250,11 +250,11 @@ class _AnimatedMergeSortState extends State<AnimatedMergeSort>
   @override
   void initState() {
     super.initState();
-
-    _controller = AnimationController(
-      duration: const Duration(seconds: 2),
-      vsync: this,
-    )..repeat(reverse: true);
+    _controller =
+        AnimationController(duration: const Duration(seconds: 2), vsync: this);
+    animation = CurvedAnimation(parent: _controller, curve: Curves.linear)
+      ..addStatusListener((status) {});
+    _controller.forward();
   }
 
   @override
@@ -262,6 +262,8 @@ class _AnimatedMergeSortState extends State<AnimatedMergeSort>
     _controller.dispose();
     super.dispose();
   }
+  bool top = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -269,11 +271,32 @@ class _AnimatedMergeSortState extends State<AnimatedMergeSort>
     double screenHeight = MediaQuery.of(context).size.height;
 
     double boxWidth = 75;
+    double padding = 100;
+
 
 
     return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: appBar(context, "Merge Sort"),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              if (top) {
+
+                _controller.forward();
+                print("Forward");
+                top = false;
+              } else {
+
+                _controller.reverse();
+                print("Reverse");
+                top = true;
+              }
+
+            });
+          },
+          child: Icon(Icons.play_arrow),
+        ),
         body: LayoutBuilder(
           builder: (context, constraints) {
             final Size biggest = constraints.biggest;
@@ -282,9 +305,13 @@ class _AnimatedMergeSortState extends State<AnimatedMergeSort>
                 PositionedTransition(
                   rect: RelativeRectTween(
                     begin: RelativeRect.fromSize(
-                        Rect.fromLTWH((screenWidth-boxWidth)/2, 50, boxWidth, boxWidth), biggest),
+                        Rect.fromLTWH((screenWidth - boxWidth) / 2, padding,
+                            boxWidth, boxWidth),
+                        biggest),
                     end: RelativeRect.fromSize(
-                        Rect.fromLTWH((screenWidth-boxWidth)/2, 300, boxWidth, boxWidth), biggest),
+                        Rect.fromLTWH((screenWidth - boxWidth) / 2, screenHeight - boxWidth - padding,
+                            boxWidth, boxWidth),
+                        biggest),
                   ).animate(CurvedAnimation(
                     parent: _controller,
                     curve: Curves.linear,
