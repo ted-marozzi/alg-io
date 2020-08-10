@@ -7,27 +7,6 @@ void main() {
   runApp(AlgIO());
 }
 
-Widget appBar(BuildContext context, String text) {
-  TextStyle titleFont = GoogleFonts.ubuntu(
-    textStyle: Theme.of(context).textTheme.headline4,
-    fontSize: 20,
-    color: Colors.white,
-  );
-  return PreferredSize(
-    preferredSize: Size.fromHeight(50),
-    child: AppBar(
-        elevation: 10,
-        backgroundColor: Theme.of(context).backgroundColor,
-        title: SafeArea(
-          child: Text(
-            text,
-            style: titleFont,
-            textAlign: TextAlign.center,
-          ),
-        )),
-  );
-}
-
 class AlgIO extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -55,6 +34,23 @@ class AlgIO extends StatelessWidget {
       },
     );
   }
+}
+
+Widget appBar(BuildContext context, String text) {
+  TextStyle titleFont = GoogleFonts.ubuntu(
+    textStyle: Theme.of(context).textTheme.headline4,
+    fontSize: 20,
+    color: Colors.white,
+  );
+  return AppBar(
+    elevation: 10,
+    backgroundColor: Theme.of(context).backgroundColor,
+    title: Text(
+      text,
+      style: titleFont,
+      textAlign: TextAlign.center,
+    ),
+  );
 }
 
 // The App will start as a stateful widget
@@ -113,6 +109,10 @@ class _HomeScreenState extends State<HomeScreen> {
     'More'
   ];
 
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,20 +123,22 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildTopics() {
-    return ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemBuilder: (BuildContext _context, int i) {
-          if (i.isOdd) {
-            return Divider();
-          }
-          final int index = i ~/ 2;
-          if (index < _topics.length) {
-            return _buildRow(_topics[index]);
-          } else {
-            return _buildRow('');
-          }
-        });
+    return ListView(
+      physics: ClampingScrollPhysics(),
+      children: createTopicsList(_topics),
+    );
   }
+
+  List<Widget> createTopicsList(_topics)
+  {
+    List<Widget>_topicsWidget = [];
+    for(int i = 0; i < _topics.length; i++) {
+      _topicsWidget.add(_buildRow(_topics[i]));
+    }
+
+    return _topicsWidget;
+  }
+
 
   Widget _buildRow(String topic) {
     final bool isEmpty = topic.isEmpty;
@@ -188,20 +190,22 @@ class _SortingAlgScreenState extends State<SortingAlgScreen> {
   }
 
   Widget _buildTopics() {
-    return ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemBuilder: (BuildContext _context, int i) {
-          if (i.isOdd) {
-            return Divider();
-          }
-          final int index = i ~/ 2;
-          if (index < _topics.length) {
-            return _buildRow(_topics[index]);
-          } else {
-            return _buildRow('');
-          }
-        });
+    return ListView(
+      physics: ClampingScrollPhysics(),
+      children: createTopicsList(_topics),
+    );
   }
+
+  List<Widget> createTopicsList(_topics)
+  {
+    List<Widget>_topicsWidget = [];
+    for(int i = 0; i < _topics.length; i++) {
+      _topicsWidget.add(_buildRow(_topics[i]));
+    }
+
+    return _topicsWidget;
+  }
+
 
   Widget _buildRow(String topic) {
     final bool isEmpty = topic.isEmpty;
@@ -262,8 +266,8 @@ class _AnimatedMergeSortState extends State<AnimatedMergeSort>
     _controller.dispose();
     super.dispose();
   }
-  bool top = false;
 
+  bool top = false;
 
   @override
   Widget build(BuildContext context) {
@@ -273,8 +277,6 @@ class _AnimatedMergeSortState extends State<AnimatedMergeSort>
     double boxWidth = 75;
     double padding = 100;
 
-
-
     return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: appBar(context, "Merge Sort"),
@@ -282,17 +284,14 @@ class _AnimatedMergeSortState extends State<AnimatedMergeSort>
           onPressed: () {
             setState(() {
               if (top) {
-
                 _controller.forward();
                 print("Forward");
                 top = false;
               } else {
-
                 _controller.reverse();
                 print("Reverse");
                 top = true;
               }
-
             });
           },
           child: Icon(Icons.play_arrow),
@@ -309,8 +308,11 @@ class _AnimatedMergeSortState extends State<AnimatedMergeSort>
                             boxWidth, boxWidth),
                         biggest),
                     end: RelativeRect.fromSize(
-                        Rect.fromLTWH((screenWidth - boxWidth) / 2, screenHeight - boxWidth - padding,
-                            boxWidth, boxWidth),
+                        Rect.fromLTWH(
+                            (screenWidth - boxWidth) / 2,
+                            screenHeight - boxWidth - padding,
+                            boxWidth,
+                            boxWidth),
                         biggest),
                   ).animate(CurvedAnimation(
                     parent: _controller,
