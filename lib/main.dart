@@ -109,10 +109,6 @@ class _HomeScreenState extends State<HomeScreen> {
     'More'
   ];
 
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -129,16 +125,14 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  List<Widget> createTopicsList(_topics)
-  {
-    List<Widget>_topicsWidget = [];
-    for(int i = 0; i < _topics.length; i++) {
+  List<Widget> createTopicsList(_topics) {
+    List<Widget> _topicsWidget = [];
+    for (int i = 0; i < _topics.length; i++) {
       _topicsWidget.add(_buildRow(_topics[i]));
     }
 
     return _topicsWidget;
   }
-
 
   Widget _buildRow(String topic) {
     final bool isEmpty = topic.isEmpty;
@@ -196,16 +190,14 @@ class _SortingAlgScreenState extends State<SortingAlgScreen> {
     );
   }
 
-  List<Widget> createTopicsList(_topics)
-  {
-    List<Widget>_topicsWidget = [];
-    for(int i = 0; i < _topics.length; i++) {
+  List<Widget> createTopicsList(_topics) {
+    List<Widget> _topicsWidget = [];
+    for (int i = 0; i < _topics.length; i++) {
       _topicsWidget.add(_buildRow(_topics[i]));
     }
 
     return _topicsWidget;
   }
-
 
   Widget _buildRow(String topic) {
     final bool isEmpty = topic.isEmpty;
@@ -248,17 +240,39 @@ class _AnimatedMergeSortState extends State<AnimatedMergeSort>
   Animation<double> animation;
   AnimationController _controller;
 
-  List<Widget> arrayBoxes = [];
-  Random rng = new Random();
+  List<AnimatedBox> animatedBoxes = [];
+
+  List<int> values;
+
+  bool flipFlop;
+  double x, y, boxSize = 50;
+  int padding = 25, numBoxes = 10, i = 1;
 
   @override
   void initState() {
     super.initState();
     _controller =
         AnimationController(duration: const Duration(seconds: 2), vsync: this);
-    animation = CurvedAnimation(parent: _controller, curve: Curves.linear)
+    animation = CurvedAnimation(parent: _controller, curve: Curves.easeInCirc)
       ..addStatusListener((status) {});
-    _controller.forward();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight =
+        MediaQuery.of(context).size.height - 2 * (padding + boxSize);
+
+    x = (screenWidth - boxSize) / 2;
+    y = (screenHeight) / numBoxes;
+
+    for (var i = 0; i < numBoxes; i++) {
+      animatedBoxes.add(AnimatedBox(x, y, i));
+
+      print("Making boxes");
+    }
   }
 
   @override
@@ -267,82 +281,117 @@ class _AnimatedMergeSortState extends State<AnimatedMergeSort>
     super.dispose();
   }
 
-  bool top = false;
+  List<AnimatedBox> swap(List<AnimatedBox> animatedBoxes, int x, int y) {
+    animatedBoxes[x].moveAnimatedBox(y);
+    animatedBoxes[y].moveAnimatedBox(x);
+
+
+
+
+    return animatedBoxes;
+  }
+  void moveBox()
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-
-    double boxWidth = 75;
-    double padding = 100;
-
+    List<Widget> boxList =
+        animatedBoxes.map((box) => box.getAnimatedBox()).toList();
     return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: appBar(context, "Merge Sort"),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             setState(() {
-              if (top) {
-                _controller.forward();
-                print("Forward");
-                top = false;
-              } else {
-                _controller.reverse();
-                print("Reverse");
-                top = true;
-              }
+              animatedBoxes[0].moveAnimatedBox(i++);
             });
           },
           child: Icon(Icons.play_arrow),
         ),
         body: LayoutBuilder(
           builder: (context, constraints) {
-            final Size biggest = constraints.biggest;
-            return Stack(
-              children: [
-                PositionedTransition(
-                  rect: RelativeRectTween(
-                    begin: RelativeRect.fromSize(
-                        Rect.fromLTWH((screenWidth - boxWidth) / 2, padding,
-                            boxWidth, boxWidth),
-                        biggest),
-                    end: RelativeRect.fromSize(
-                        Rect.fromLTWH(
-                            (screenWidth - boxWidth) / 2,
-                            screenHeight - boxWidth - padding,
-                            boxWidth,
-                            boxWidth),
-                        biggest),
-                  ).animate(CurvedAnimation(
-                    parent: _controller,
-                    curve: Curves.linear,
-                  )),
-                  child: Padding(
-                      padding: const EdgeInsets.all(8), child: arrayBox(0)),
-                ),
-              ],
-            );
+            return Stack(children: boxList);
           },
         ));
   }
+}
 
-  Widget arrayBox(int i) {
+class AnimatedBox {
+  int translation = 35;
+  int value;
+  int pos;
+  double boxSize = 50, l, t;
+  Widget arrayBox;
+  Random rng = new Random();
+  int numDigits = 10;
+
+  double x, y;
+
+  Widget animatedBox;
+
+  AnimatedBox(double x, double y, int pos) {
+    this.x = x;
+    this.y = y;
+
+    this.value = rng.nextInt(numDigits);
+    this.boxSize = boxSize;
+
+    this.arrayBox = _makeBox();
+
+    this.pos = pos;
+  }
+
+  Widget _makeBox() {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: Container(
           decoration: BoxDecoration(color: Colors.white),
           child: SizedBox(
-              width: 75,
-              height: 75,
+              width: boxSize,
+              height: boxSize,
               child: Center(
                   child: Text(
-                i.toString(),
+                value.toString(),
                 style: TextStyle(
                     color: Colors.black,
                     decoration: TextDecoration.none,
                     fontSize: 20),
               )))),
     );
+  }
+
+  Widget getAnimatedBox() {
+    this.pos = pos;
+    this.l = x;
+    this.t = y * pos + translation;
+    animatedBox = AnimatedPositioned(
+      duration: Duration(milliseconds: 500),
+      top: t,
+      left: l,
+      child: arrayBox,
+    );
+
+    return animatedBox;
+  }
+
+  Widget moveAnimatedBox(int pos) {
+    this.pos = pos;
+    this.l = x;
+    this.t = y * pos + translation;
+    animatedBox = AnimatedPositioned(
+      duration: Duration(milliseconds: 500),
+      top: t,
+      left: l,
+      child: arrayBox,
+    );
+
+    return animatedBox;
+  }
+
+  void setValue(int newValue) {
+    this.value = value;
+  }
+
+  int getValue() {
+    return this.value;
   }
 }
