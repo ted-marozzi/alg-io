@@ -285,12 +285,43 @@ class _AnimatedMergeSortState extends State<AnimatedMergeSort>
     animatedBoxes[x].moveAnimatedBox(y);
     animatedBoxes[y].moveAnimatedBox(x);
 
-
+    //TODO: Work out how to keep track of array that is being sorted
 
 
     return animatedBoxes;
   }
-  void moveBox()
+  
+  void moveBoxTo(int from, int to)  {
+    
+    for(var i = 0; i < animatedBoxes.length; i++) {
+
+
+      if(animatedBoxes[i].pos == from)  {
+        animatedBoxes[i].moveAnimatedBox(to);
+        break;
+      }
+    }
+       
+  }
+
+  void swapBoxes(int box1, int box2)  {
+    int tmp;
+
+    for(var i = 0; i < animatedBoxes.length; i++) {
+
+      if(animatedBoxes[i].pos == box1)  {
+
+        for(var j = 0; j < animatedBoxes.length; j++) {
+          if(animatedBoxes[j].pos == box2)  {
+            moveBoxTo(box2, box1);
+            break;
+          }
+        }
+
+      }
+    }
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -302,7 +333,14 @@ class _AnimatedMergeSortState extends State<AnimatedMergeSort>
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             setState(() {
-              animatedBoxes[0].moveAnimatedBox(i++);
+              
+              swapBoxes(2, 3);
+
+
+
+
+
+              
             });
           },
           child: Icon(Icons.play_arrow),
@@ -360,7 +398,7 @@ class AnimatedBox {
   }
 
   Widget getAnimatedBox() {
-    this.pos = pos;
+
     this.l = x;
     this.t = y * pos + translation;
     animatedBox = AnimatedPositioned(
