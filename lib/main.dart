@@ -1,7 +1,7 @@
 
 
-import 'package:algo_io_files/pages/MergeSort.dart';
-import 'package:algo_io_files/pages/SortingAlgScreen.dart';
+import 'package:algo_io_files/pages/merge_sort_screen.dart';
+import 'package:algo_io_files/pages/sorting_alg_screen.dart';
 import 'package:algo_io_files/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -50,7 +50,7 @@ class AlgIO extends StatelessWidget {
         '/': (context) => WelcomeScreen(),
         '/home': (context) => HomeScreen(),
         '/Sorting Algorithms': (context) => SortingAlgScreen(),
-        '/Merge Sort': (context) => AnimatedMergeSort(),
+        '/Merge Sort': (context) => MergeSortScreen(),
       },
     );
   }
