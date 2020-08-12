@@ -34,8 +34,8 @@ class SortWidget extends StatelessWidget {
     final offset = _getPosition();//use mid x and  index
 
     return AnimatedPositioned(
-      duration: const Duration(milliseconds: 2250),
-      curve: Curves.elasticOut,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.linear,
       left: offset.dx,
       top: offset.dy,
       child: SizedBox(

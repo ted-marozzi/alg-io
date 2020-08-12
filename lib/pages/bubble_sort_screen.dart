@@ -1,11 +1,11 @@
 
-import 'package:algo_io_files/sorts/merge_sort.dart';
+import 'package:algo_io_files/sorts/sort.dart';
 
 
 import 'package:flutter/material.dart';
 
 
-class MergeSortScreen extends StatelessWidget {
+class BubbleSortScreen extends StatelessWidget {
 
 
   @override
@@ -17,7 +17,7 @@ class MergeSortScreen extends StatelessWidget {
 
     return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
-        body: MergeSort()
+        body: BubbleSort()
         );
   }
 }
