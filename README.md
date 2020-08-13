@@ -1,7 +1,7 @@
 # alg-io
 A data structure and algorithm viewing tool. Written in flutter deployed in ios, android and web.
 
-<img src="https://github.com/ted-marozzi/alg-io/blob/master/preview/home.png?raw=true" alt="Home Screen preview" width="300"> <img src="https://github.com/ted-marozzi/alg-io/blob/master/preview/merge-sort.png?raw=true" alt="Home Screen preview" width="300">
+<img src="https://github.com/ted-marozzi/alg-io/blob/master/preview/home.png?raw=true" alt="Home Screen preview" width="300"> <img src="https://github.com/ted-marozzi/alg-io/blob/master/preview/bubble-sort.gif?raw=true" alt="Bubble Sort preview" width="300">
 
 
 Please follow this style guide.
