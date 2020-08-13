@@ -1,12 +1,6 @@
-
-
-import 'package:algo_io_files/pages/bubble_sort_screen.dart';
-import 'package:algo_io_files/pages/sorting_alg_screen.dart';
-import 'package:algo_io_files/pages/home.dart';
+import 'alg_io_library.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'package:algo_io_files/pages/welcome_screen.dart';
 
 void main() {
   runApp(AlgIO());
@@ -55,5 +49,3 @@ class AlgIO extends StatelessWidget {
     );
   }
 }
-
-

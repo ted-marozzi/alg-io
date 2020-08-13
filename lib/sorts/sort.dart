@@ -1,5 +1,3 @@
-
-
 import 'package:algo_io_files/util/app_bar.dart';
 import 'package:algo_io_files/util/sort_widget.dart';
 import 'package:flutter/material.dart';
@@ -51,11 +49,7 @@ class _BubbleSortState extends State<BubbleSort> {
         color: Theme.of(context).iconTheme.color,
         iconSize: Theme.of(context).iconTheme.size,
         onPressed: () {
-
           bubbleSort(numbers);
-
-
-
         },
       ),
     ]);
@@ -68,37 +62,33 @@ class _BubbleSortState extends State<BubbleSort> {
   }
 
   void bubbleSort(List<SortModel> numbers) async {
-    for(var i =0; i < numbers.length; i++)  {
-      for(var j=0; j<numbers.length-i-1; j++)  {
-        if(numbers[j].value > numbers[j+1].value) {
-          swap(j, j+1);
+    for (var i = 0; i < numbers.length; i++) {
+      for (var j = 0; j < numbers.length - i - 1; j++) {
+        if (numbers[j].value > numbers[j + 1].value) {
+          swap(j, j + 1);
           render();
           await pause();
         }
-
       }
     }
-
   }
 
   void mergeSort(List<SortModel> numbers) async {
-
-    if(numbers.length > 1)  {
+    if (numbers.length > 1) {
       var mid = numbers.length ~/ 2;
-      var left = numbers.sublist(0,mid);
+      var left = numbers.sublist(0, mid);
       var right = numbers.sublist(mid);
       mergeSort(left);
       mergeSort(right);
 
       var i = 0, j = 0, k = 0;
 
-      while(i < left.length && j < right.length) {
-
-        if(left[i].value < right[j].value)  {
+      while (i < left.length && j < right.length) {
+        if (left[i].value < right[j].value) {
           numbers[k] = left[i];
 
           i++;
-        } else{
+        } else {
           numbers[k] = right[j];
           j++;
         }
@@ -109,9 +99,7 @@ class _BubbleSortState extends State<BubbleSort> {
         k++;
       }
 
-
-
-      while(i<left.length) {
+      while (i < left.length) {
         numbers[k] = left[i];
         i++;
         k++;
@@ -120,7 +108,7 @@ class _BubbleSortState extends State<BubbleSort> {
       render();
       await pause();
 
-      while(j<right.length) {
+      while (j < right.length) {
         numbers[k] = right[j];
         render();
         j++;
@@ -129,27 +117,15 @@ class _BubbleSortState extends State<BubbleSort> {
 
       render();
       await pause();
-
-
     }
-
   }
 
-
-
   void render() {
-
-
-    setState(() {
-
-    });
-
+    setState(() {});
   }
 
   Future pause() async {
     var executionSpeed = 600;
     await Future.delayed(Duration(milliseconds: executionSpeed));
   }
-
-
 }
