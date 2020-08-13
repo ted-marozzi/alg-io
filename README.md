@@ -3,7 +3,24 @@ A data structure and algorithm viewing tool. Written in flutter deployed in ios,
 
 <img src="https://github.com/ted-marozzi/alg-io/blob/master/preview/home.png?raw=true" alt="Home Screen preview" width="300"> <img src="https://github.com/ted-marozzi/alg-io/blob/master/preview/bubble-sort.gif?raw=true" alt="Bubble Sort preview" width="300">
 
+## Project Goals / Design
 
+The Goals of the project are to:
+
+<!-- <img src="https://github.com/ted-marozzi/alg-io/blob/master/preview/logo-goals.png?raw=true" alt="Team Goals Logo" width="300"> -->
+![image info](./preview/logo-goals-small.png)
+
+
+1. __Create__ a useful data visualisation tool for students interested in Computer Science,
+    
+2. __Build__ the foundations of knowledge in App Development for all team members,
+
+3. __Develop__ an in depth understanding of Flutter and Dart as a coding base, and
+
+4. __Apply__ best Git workflow practices as part of a team project environment.
+    
+
+## Workflow and Design Pattern
 Please follow this style guide.
 https://dart.dev/guides/language/effective-dart/style
 
@@ -41,7 +58,7 @@ To use:
     git commit -m "Descriptive"
     git push origin username-feature
     
-    # Now wait for pull request to be reviewed and accepted or denyied.
+    # Now wait for pull request to be reviewed and accepted or denied.
     # If accepted make sure to, and just do it in general to stay up to date
     git pull origin master
     
