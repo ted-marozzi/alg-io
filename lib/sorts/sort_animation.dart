@@ -21,16 +21,22 @@ class SortAnimation<T extends BaseSort> extends StatelessWidget {
       return Column(children: <Widget>[
         MyAppBar(title),
         Expanded(
-          child: Stack(
-            children: <Widget>[
-              for (int i = 0; i < provider.numbers.length; i++)
-                SortWidget(
-                  key: provider.numbers[i].key,
-                  number: provider.numbers[i],
-                  index: i,
-                  containerWidth: width,
-                )
-            ],
+          child: SingleChildScrollView(
+            child: SizedBox(
+              width: width,
+              height: BaseSort.getNumModels() * SortWidget.getUnitHeight(),
+              child: Stack(
+                children: <Widget>[
+                  for (int i = 0; i < provider.numbers.length; i++)
+                    SortWidget(
+                      key: provider.numbers[i].key,
+                      number: provider.numbers[i],
+                      index: i,
+                      containerWidth: width,
+                    )
+                ],
+              ),
+            ),
           ),
         ),
         IconButton(

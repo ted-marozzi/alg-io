@@ -2,8 +2,6 @@ import 'package:algo_io_files/util/sort_model.dart';
 import 'package:flutter/material.dart';
 
 class SortWidget extends StatelessWidget {
-
-
   const SortWidget({
     Key key,
     @required this.number,
@@ -15,23 +13,20 @@ class SortWidget extends StatelessWidget {
 
   final SortModel number;
   final int index;
-  final int paddingInBetween = 10;
-  final int paddingTop = 30;
-  final double widgetSize = 50;
+  static final int paddingInBetween = 10;
+
+  static final double widgetSize = 50;
   final double containerWidth;
   final double radius = 10;
 
   Offset _getPosition() {
-
-    return Offset(
-        (containerWidth-widgetSize)/2,
-        ( widgetSize + paddingInBetween )* index + paddingTop
-    );
+    return Offset((containerWidth - widgetSize) / 2,
+        (widgetSize + paddingInBetween) * index + paddingInBetween);
   }
 
   @override
   Widget build(BuildContext context) {
-    final offset = _getPosition();//use mid x and  index
+    final offset = _getPosition(); //use mid x and  index
 
     return AnimatedPositioned(
       duration: const Duration(milliseconds: 500),
@@ -42,10 +37,9 @@ class SortWidget extends StatelessWidget {
         width: widgetSize,
         height: widgetSize,
         child: DecoratedBox(
-          decoration: BoxDecoration(color: Colors.white24,
-              borderRadius: BorderRadius.all(Radius.circular(radius))
-          ),
-
+          decoration: BoxDecoration(
+              color: Colors.white24,
+              borderRadius: BorderRadius.all(Radius.circular(radius))),
           child: Center(
             child: Text(
               number.value.toString(),
@@ -55,5 +49,9 @@ class SortWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  static double getUnitHeight() {
+    return widgetSize + paddingInBetween;
   }
 }
