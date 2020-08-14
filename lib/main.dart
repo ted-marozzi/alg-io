@@ -1,9 +1,23 @@
-import 'alg_io_library.dart';
+import 'package:algo_io_files/pages/insertion_sort_screen.dart';
+import 'package:algo_io_files/pages/quick_sort_screen.dart';
+import 'package:algo_io_files/sorts/bubble_sort.dart';
+import 'package:algo_io_files/sorts/insertion_sort.dart';
+import 'package:algo_io_files/sorts/quick_sort.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import 'alg_io_library.dart';
 
 void main() {
-  runApp(AlgIO());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => new BubbleSort()),
+      ChangeNotifierProvider(create: (context) => new InsertionSort()),
+      ChangeNotifierProvider(create: (context) => new QuickSort()),
+    ],
+    child: AlgIO(),
+  ));
 }
 
 class AlgIO extends StatelessWidget {
@@ -45,6 +59,8 @@ class AlgIO extends StatelessWidget {
         '/home': (context) => HomeScreen(),
         '/Sorting Algorithms': (context) => SortingAlgScreen(),
         '/Bubble Sort': (context) => BubbleSortScreen(),
+        '/Insertion Sort': (context) => InsertionSortScreen(),
+        '/Quick Sort': (context) => QuickSortScreen()
       },
     );
   }

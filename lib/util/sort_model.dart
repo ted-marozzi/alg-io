@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SortModel {
-
-  SortModel(this.value) : key = GlobalKey();
+  SortModel(this.value) : key = UniqueKey();
 
   final int value;
-  final GlobalKey key;
-
+  final UniqueKey key;
 }

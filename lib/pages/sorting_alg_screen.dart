@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class SortingAlgScreen extends StatelessWidget {
   final List<String> _topics = [
     'Bubble Sort',
+    'Insertion Sort',
     'Quick Sort',
   ];
 
@@ -14,4 +15,3 @@ class SortingAlgScreen extends StatelessWidget {
     return MenuView(_title, _topics);
   }
 }
-
