@@ -39,13 +39,26 @@ class SortAnimation<T extends BaseSort> extends StatelessWidget {
             ),
           ),
         ),
-        IconButton(
-          icon: Icon(Icons.play_arrow),
-          color: Theme.of(context).iconTheme.color,
-          iconSize: Theme.of(context).iconTheme.size,
-          onPressed: () {
-            Provider.of<T>(context, listen: false).sort();
-          },
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              icon: Icon(Icons.play_arrow),
+              color: Theme.of(context).iconTheme.color,
+              iconSize: Theme.of(context).iconTheme.size,
+              onPressed: () {
+                Provider.of<T>(context, listen: false).sort();
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.refresh),
+              color: Theme.of(context).iconTheme.color,
+              iconSize: Theme.of(context).iconTheme.size,
+              onPressed: () {
+                Provider.of<T>(context, listen: false).reset();
+              },
+            ),
+          ],
         ),
       ]);
     }));

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:algo_io_files/util/menu_view.dart';
 
 
-class HomeScreen extends StatelessWidget {
+class MainMenuScreen extends StatelessWidget {
 
   final List<String> _topics = [
     'Sorting Algorithms',
