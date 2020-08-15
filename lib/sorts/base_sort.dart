@@ -5,7 +5,7 @@ import 'package:algo_io_files/util/sort_model.dart';
 import 'package:flutter/material.dart';
 
 abstract class BaseSort extends ChangeNotifier {
-  int numModels = 10;
+  static int numModels = 14;
   Random rng = new Random();
   List<SortModel> numbers = new List();
 
@@ -34,5 +34,9 @@ abstract class BaseSort extends ChangeNotifier {
 
   List<SortModel> getNumbers() {
     return numbers;
+  }
+
+  static int getNumModels() {
+    return numModels;
   }
 }
