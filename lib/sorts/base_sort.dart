@@ -5,7 +5,9 @@ import 'package:algo_io_files/alg_io_library.dart';
 import 'package:flutter/material.dart';
 
 abstract class BaseSort extends ChangeNotifier {
+
   static int numModels = 10;
+
   Random rng = new Random();
   List<SortModel> numbers = new List();
 
