@@ -6,7 +6,8 @@ import 'package:algo_io_files/sorts/quick_sort.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
+import 'package:algo_io_files/sorts/selection_sort.dart';
+import 'package:algo_io_files/pages/selection_sort_screen.dart';
 import 'alg_io_library.dart';
 
 void main() {
@@ -60,7 +61,8 @@ class AlgIO extends StatelessWidget {
         '/Sorting Algorithms': (context) => SortingAlgScreen(),
         '/Bubble Sort': (context) => BubbleSortScreen(),
         '/Insertion Sort': (context) => InsertionSortScreen(),
-        '/Quick Sort': (context) => QuickSortScreen()
+        '/Quick Sort': (context) => QuickSortScreen(),
+        '/Selection Sort': (context) =>
       },
     );
   }

@@ -6,6 +6,7 @@ class SortingAlgScreen extends StatelessWidget {
     'Bubble Sort',
     'Insertion Sort',
     'Quick Sort',
+    'Selection Sort',
   ];
 
   final String _title = "Sorting Algorithms";
