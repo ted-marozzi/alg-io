@@ -17,7 +17,11 @@ class SortAnimation<T extends BaseSort> extends StatelessWidget {
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
 
-    return Container(child: Consumer<T>(builder: (context, provider, child) {
+    return Container(child:
+
+
+    Consumer<T>(
+        builder: (context, provider, child) {
       return Column(children: <Widget>[
         MyAppBar(title),
         Expanded(

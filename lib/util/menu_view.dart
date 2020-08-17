@@ -44,7 +44,7 @@ class MenuView extends StatelessWidget {
   }
   void visitPage(BuildContext context, String directory) {
 
-    Navigator.pushNamed(context, directory);
+    Navigator.pushNamed(context, ModalRoute.of(context).settings.name + directory);
 
   }
 

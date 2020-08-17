@@ -7,7 +7,9 @@ class MyAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     double topPadding = MediaQuery.of(context).padding.top;
+
     return Padding(
       padding: EdgeInsets.only(top: topPadding),
       child: AppBar(

@@ -60,11 +60,11 @@ class AlgIO extends StatelessWidget {
       routes: {
         '/': (context) => WelcomeScreen(),
         '/home': (context) => MainMenuScreen(),
-        '/Sorting Algorithms': (context) => SortingAlgScreen(),
-        '/Bubble Sort': (context) => BubbleSortScreen(),
-        '/Insertion Sort': (context) => InsertionSortScreen(),
-        '/Quick Sort': (context) => QuickSortScreen(),
-        '/Merge Sort': (context) => MergeSortScreen(),
+        '/home/Sorting Algorithms': (context) => SortingAlgScreen(),
+        '/home/Sorting Algorithms/Bubble Sort': (context) => BubbleSortScreen(),
+        '/home/Sorting Algorithms/Insertion Sort': (context) => InsertionSortScreen(),
+        '/home/Sorting Algorithms/Quick Sort': (context) => QuickSortScreen(),
+        '/home/Sorting Algorithms/Merge Sort': (context) => MergeSortScreen(),
       },
     );
   }

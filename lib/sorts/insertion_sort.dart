@@ -13,6 +13,7 @@ class InsertionSort extends BaseSort {
       while (min < max) {
         var mid = min + ((max - min) >> 1);
 
+
         if (element.value - numbers[mid].value < 0) {
           max = mid;
         } else {
