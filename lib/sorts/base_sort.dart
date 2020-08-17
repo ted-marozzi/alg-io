@@ -5,13 +5,13 @@ import 'package:algo_io_files/util/sort_model.dart';
 import 'package:flutter/material.dart';
 
 abstract class BaseSort extends ChangeNotifier {
-  int numModels = 10;
+  int numModels = 6;
   Random rng = new Random();
   List<SortModel> numbers = new List();
 
   BaseSort() {
     for (int i = 0; i < numModels; i++) {
-      numbers.add(SortModel(rng.nextInt(numModels)));
+      numbers.add(SortModel(rng.nextInt(20)));
     }
   }
 
@@ -24,7 +24,7 @@ abstract class BaseSort extends ChangeNotifier {
   }
 
   Future pause() async {
-    var executionSpeed = 600;
+    var executionSpeed = 6000;
     await Future.delayed(Duration(milliseconds: executionSpeed));
   }
 

@@ -16,6 +16,7 @@ void main() {
       ChangeNotifierProvider(create: (context) => new BubbleSort()),
       ChangeNotifierProvider(create: (context) => new InsertionSort()),
       ChangeNotifierProvider(create: (context) => new QuickSort()),
+      ChangeNotifierProvider(create: (context) => new SelectionSort()),
     ],
     child: AlgIO(),
   ));
@@ -62,7 +63,7 @@ class AlgIO extends StatelessWidget {
         '/Bubble Sort': (context) => BubbleSortScreen(),
         '/Insertion Sort': (context) => InsertionSortScreen(),
         '/Quick Sort': (context) => QuickSortScreen(),
-        '/Selection Sort': (context) =>
+        '/Selection Sort': (context) => SelectionSortScreen(),
       },
     );
   }
