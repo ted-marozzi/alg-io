@@ -59,7 +59,7 @@ class AlgIO extends StatelessWidget {
       ),
       routes: {
         '/': (context) => WelcomeScreen(),
-        '/home': (context) => HomeScreen(),
+        '/home': (context) => MainMenuScreen(),
         '/Sorting Algorithms': (context) => SortingAlgScreen(),
         '/Bubble Sort': (context) => BubbleSortScreen(),
         '/Insertion Sort': (context) => InsertionSortScreen(),
